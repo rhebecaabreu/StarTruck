@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".view.UserRegister" />
         <activity android:name=".view.Main2Activity" />
-        <activity android:name=".view.EnterpriseRegister"></activity>
+        <activity android:name=".view.EnterpriseRegister" />
+        <activity android:name=".view.act_RegistroMotorista"></activity>
     </application>
 
 </manifest>
