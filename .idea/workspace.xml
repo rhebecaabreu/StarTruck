@@ -9,36 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf9bbd59-981f-4487-ac2f-b91321fea9d3" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/controller/EnterpriseController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/controller/UserController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/model/bean/Enterprise.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/model/bean/Truck.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/model/bean/User.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/model/bean/Vehicle.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/model/dao/EnterpriseDAO.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/model/dao/UserDAO.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/view/EnterpriseRegister.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/view/MainActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/view/UserRegister.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_enterprise_register.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/progmobile/startruck/view/Main2Activity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-    </list>
+    <list default="true" id="bf9bbd59-981f-4487-ac2f-b91321fea9d3" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
