@@ -19,7 +19,11 @@
         <activity android:name=".view.UserRegister" />
         <activity android:name=".view.Main2Activity" />
         <activity android:name=".view.EnterpriseRegister" />
-        <activity android:name=".view.act_RegistroMotorista"></activity>
+        <activity android:name=".view.DriverRegister" />
+        <activity
+            android:name=".view.Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

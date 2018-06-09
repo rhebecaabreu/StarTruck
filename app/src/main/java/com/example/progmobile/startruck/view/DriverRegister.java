@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.progmobile.startruck.controller.UserController;
+import com.example.progmobile.startruck.R;
+import com.example.progmobile.startruck.controller.DriverController;
 
-public class act_RegistroMotorista extends AppCompatActivity {
+public class DriverRegister extends AppCompatActivity {
     private EditText edtDriverName;
     private EditText edtRG;
     private EditText edtCPF;
@@ -21,7 +22,7 @@ public class act_RegistroMotorista extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act__registro_motorista);
+        setContentView(R.layout.activity_driver_register);
 
         getSupportActionBar().setTitle("Cadastrar usuário");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,7 +36,7 @@ public class act_RegistroMotorista extends AppCompatActivity {
 
     }
     public void onClickSaveUser(View v){
-        driver = new DriverController();
+        DriverController driver = new DriverController();
 
         String Name = edtDriverName.getText().toString();
         String RG = edtRG.getText().toString();
@@ -46,11 +47,11 @@ public class act_RegistroMotorista extends AppCompatActivity {
         if(Name.trim().isEmpty() ||
                 RG.trim().isEmpty() || email.trim().isEmpty() ||
                 CPF.trim().isEmpty() || phone.trim().isEmpty()){
-            Toast toast = Toast.makeText(UserRegister.this,"Por favor, preencha todos os campos!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(DriverRegister.this,"Por favor, preencha todos os campos!", Toast.LENGTH_SHORT);
             toast.show();
         }else {
-            driver.save(this,Name, RG, CPF, email, phone);
-            Toast toast = Toast.makeText(UserRegister.this,"Cadastro realizado com sucesso!",
+            driver.save(DriverRegister.this,Name, RG, CPF, email, phone);
+            Toast toast = Toast.makeText(DriverRegister.this,"Cadastro realizado com sucesso!",
                     Toast.LENGTH_SHORT);
             toast.show();
             clear();

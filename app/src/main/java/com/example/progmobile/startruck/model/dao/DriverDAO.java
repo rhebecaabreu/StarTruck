@@ -9,54 +9,54 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.progmobile.startruck.model.bean.Driver;
 import com.example.progmobile.startruck.model.bean.User;
 
-public class DriverDAO extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
-    private static final String DATABASE_NAME = "starTruck.db";
+public class DriverDAO {
 
     private static final String TABLE_NAME = "driver";
 
     private static final String COLUMN_ID = "idDriver";
-    private static final String COLUMN_NAME = "Name";
-    private static final String COLUMN_CPF = "CPF";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_CPF = "cpf";
     private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_PHONE = "Phone" ;
-    private static final String COLUMN_RG = "RG";
+    private static final String COLUMN_PHONE = "phone" ;
+    private static final String COLUMN_RG = "rg";
+    private static final String COLUMN_ID_USER = "userId" ;
+    private static final String COLUMN_ID_ENTERPRISE = "enterpriseId";
 
 
-    SQLiteDatabase bd;
+    SQLiteDatabase db, db2;
 
-    private static final String TABLE_CREATE =
+    public static final String TABLE_CREATE_DRIVER =
             "CREATE TABLE driver ("+
                     "idDriver integer not null, " +
-                    "Name text not null, "+
-                    "CPF text not null, "+
+                    "name text not null, "+
+                    "cpf text not null, "+
                     "email text not null, "+
-                    "RG text not null, "+
-                    "Phone text not null unique, "+
+                    "rg text not null, "+
+                    "phone text not null unique, " +
+                    "userId integer not null, " +
+                    "enterpriseId integer not null,"+
+                    "FOREIGN KEY (userId) REFERENCES user(idUser) ON UPDATE NO ACTION ON DELETE CASCADE,"+
+                    "FOREIGN KEY (enterpriseId) REFERENCES enterprise(idEnterprise) ON UPDATE CASCADE ON DELETE CASCADE,"+
                     "PRIMARY KEY(idDriver))";
 
+    public static final String TABLE_DROP_DRIVER = "DROP TABLE IF EXISTS "+TABLE_NAME;
+
+    private static DriverDAO instance;
+
+    private static DriverDAO getInstance(Context context){
+        if(instance == null)
+            instance = new DriverDAO(context);
+        return instance;
+    }
+
+
     public DriverDAO(Context context){
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        BDHelper bdHelper = BDHelper.getInstance(context);
+        db = bdHelper.getWritableDatabase();
+        db2 = bdHelper.getReadableDatabase();
     }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        this.bd = db;
-
-        bd.execSQL(TABLE_CREATE);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        String query = "DROP TABLE IF EXISTS "+TABLE_NAME;
-        this.bd = sqLiteDatabase;
-        bd.execSQL(query);
-        this.onCreate(bd);
-    }
-
 
     public void insert(Driver d){
-        bd = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_NAME, d.getName());
@@ -66,14 +66,12 @@ public class DriverDAO extends SQLiteOpenHelper {
         values.put(COLUMN_PHONE, d.getPhone());
 
 
-        bd.insert(TABLE_NAME, null, values);
-        bd.close();
+        db.insert(TABLE_NAME, null, values);
     }
 
     public int searchDriverID(String Nome){
-        bd = this.getWritableDatabase();
-        String query = "SELECT Name, idDriver FROM " + TABLE_NAME;
-        Cursor cursor = bd.rawQuery(query, null);
+        String query = "SELECT name, idDriver FROM " + TABLE_NAME;
+        Cursor cursor = db2.rawQuery(query, null);
         String a;
         int b;
 

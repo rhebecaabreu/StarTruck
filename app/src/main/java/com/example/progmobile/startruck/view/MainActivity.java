@@ -1,8 +1,9 @@
 package com.example.progmobile.startruck.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickRegisterUser(View v){
-        Intent it = new Intent(this,UserRegister.class);
+        Intent it = new Intent(this, UserRegister.class);
         startActivity(it);
     }
 
     public void onClickLogin(View v){
         user = new UserController();
-        if(user.login(this, edtName.getText().toString(), edtPassword.getText().toString())){
-            usr = user.searchIdUsr(this, edtName.getText().toString());
-            Intent it = new Intent(this, Main2Activity.class);
+        if(user.login(MainActivity.this, edtName.getText().toString(), edtPassword.getText().toString())){
+            usr = user.searchIdUsr(MainActivity.this, edtName.getText().toString());
+            Intent it = new Intent(this, Main3Activity.class);
             startActivity(it);
         }else {
             Toast toast = Toast.makeText(MainActivity.this,

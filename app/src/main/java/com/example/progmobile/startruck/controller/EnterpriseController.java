@@ -18,7 +18,6 @@ public class EnterpriseController {
         e.setCpnj(cnpj);
         e.setAdress(adress);
         e.setPhone(phone);
-        e.setIdUser(MainActivity.usr);
         edao.insert(e);
     }
 

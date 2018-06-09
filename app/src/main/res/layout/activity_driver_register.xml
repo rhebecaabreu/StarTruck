@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.act_RegistroMotorista">
+    tools:context=".view.DriverRegister">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -87,7 +87,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSaveDriver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorButtons"
