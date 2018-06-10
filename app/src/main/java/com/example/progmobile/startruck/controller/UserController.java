@@ -34,4 +34,10 @@ public class UserController {
         int userId = udao.searchUserID(username);
         return userId;
     }
+
+    public String seachFullName(Context context, String username){
+        UserDAO udao = new UserDAO(context);
+        String fullName = udao.searchFullName(username);
+        return  fullName;
+    }
 }

@@ -88,6 +88,24 @@ public class UserDAO {
         return -1;
     }
 
+    public String searchFullName(String username){
+        String query = "SELECT username, firstName, lastName FROM " + TABLE_NAME;
+        Cursor cursor = db2.rawQuery(query, null);
+        String a;
+        String fullName = "Nome não encontrado";
+
+        if (cursor.moveToFirst()) {
+            do {
+                a = cursor.getString(0);
+                if (a.equals(username)) {
+                    fullName= cursor.getString(1) + " "+ cursor.getString(2);
+                    return fullName;
+                }
+            } while (cursor.moveToNext());
+        }
+        return fullName;
+    }
+
 
     public boolean checkUsernamePassword(String username, String password){
         String query = "SELECT username, password FROM " + TABLE_NAME;

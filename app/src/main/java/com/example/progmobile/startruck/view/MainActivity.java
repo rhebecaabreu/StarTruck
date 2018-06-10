@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public Spinner etpSpinner;
 
     public static int usr;
+    public static String usrname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         user = new UserController();
         if(user.login(MainActivity.this, edtName.getText().toString(), edtPassword.getText().toString())){
             usr = user.searchIdUsr(MainActivity.this, edtName.getText().toString());
+            usrname = edtName.getText().toString();
             Intent it = new Intent(this, Main3Activity.class);
             startActivity(it);
         }else {
