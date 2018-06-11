@@ -4,8 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.progmobile.startruck.model.bean.Vehicle;
+
 public class BDHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "StarTruckDB.db";
 
     SQLiteDatabase bd;
@@ -26,7 +28,7 @@ public class BDHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         this.bd = db;
         bd.execSQL(UserDAO.TABLE_CREATE_USER);
-        //bd.execSQL(EnterpriseDAO.TABLE_CREATE_ENTERPRISE);
+        bd.execSQL(VehicleDAO.TABLE_CREATE_VEHICLE);
         bd.execSQL(DriverDAO.TABLE_CREATE_DRIVER);
         System.out.println(" tables created");
 
@@ -36,7 +38,7 @@ public class BDHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         this.bd = db;
         bd.execSQL(UserDAO.TABLE_DROP_USER);
-        //bd.execSQL(EnterpriseDAO.TABLE_DROP_ENTERPRISE);
+        bd.execSQL(VehicleDAO.TABLE_DROP_VEHICLE);
         bd.execSQL(DriverDAO.TABLE_DROP_DRIVER);
         onCreate(db);
     }

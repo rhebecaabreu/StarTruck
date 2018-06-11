@@ -11,4 +11,27 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="spinnerTypeVehicle">
+        <item>Selecione</item>
+        <item>Carro</item>
+        <item>Moto</item>
+        <item>Carreta</item>
+        <item>Caminhão</item>
+    </string-array>
+
+    <string-array name="spinnerTypeFuel">
+        <item>Selecione</item>
+        <item>Gasolina</item>
+        <item>Diesel</item>
+        <item>Etanol</item>
+        <item>Gás Natural</item>
+    </string-array>
 </resources>
+
+
+

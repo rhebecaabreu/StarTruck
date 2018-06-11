@@ -29,7 +29,6 @@ public class Main3Activity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,7 +43,6 @@ public class Main3Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
     }
 
     public void fabMenu(){
@@ -54,21 +52,18 @@ public class Main3Activity extends AppCompatActivity
 
         final Animation fabOpen, fabClose;
 
-
         final FloatingActionMenu fab = (FloatingActionMenu) findViewById(R.id.fab);
         fab_car = (FloatingActionButton) findViewById(R.id.fab_vehicle);
         fab_driver = (FloatingActionButton) findViewById(R.id.fab_driver);
 
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-
             }
         });
 
-
         fab_car.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleRegisterFragment()).commit();
 
 
             }
@@ -78,8 +73,6 @@ public class Main3Activity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 fragmentManager.beginTransaction().replace(R.id.fragment, new DriverRegisterFragment()).commit();
-
-
 
             }
         });
