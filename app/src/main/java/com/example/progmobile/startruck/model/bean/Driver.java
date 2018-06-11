@@ -7,6 +7,15 @@ public class Driver {
     private String email;
     private String CPF;
     private String Phone;
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getPhone() {
         return Phone;

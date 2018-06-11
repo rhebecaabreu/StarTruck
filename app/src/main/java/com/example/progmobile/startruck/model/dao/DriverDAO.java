@@ -61,6 +61,7 @@ public class DriverDAO {
         values.put(COLUMN_EMAIL, d.getEmail());
         values.put(COLUMN_RG, d.getRG());
         values.put(COLUMN_PHONE, d.getPhone());
+        values.put(COLUMN_ID_USER, d.getUserId());
 
 
         db.insert(TABLE_NAME, null, values);
