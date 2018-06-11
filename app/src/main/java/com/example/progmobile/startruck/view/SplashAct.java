@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.progmobile.startruck.R;
-
 public class SplashAct extends AppCompatActivity {
 
     @Override
