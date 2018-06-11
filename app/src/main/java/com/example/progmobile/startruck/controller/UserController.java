@@ -10,7 +10,7 @@ public class UserController {
 
     User u = new User();
 
-    public void save(Context context, String firstName, String lastName, String function, String email, String username, String password) {
+    public void save(Context context, String firstName, String lastName, String enterprise, String function, String email, String username, String password) {
         UserDAO udao = new UserDAO(context);
         u.setFirstName(firstName);
         u.setLastName(lastName);
@@ -18,6 +18,7 @@ public class UserController {
         u.setEmail(email);
         u.setUsername(username);
         u.setPassword(password);
+        u.setEnterprise(enterprise);
         udao.insert(u);
     }
 

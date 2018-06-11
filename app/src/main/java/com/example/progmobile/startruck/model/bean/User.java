@@ -8,6 +8,15 @@ public class User {
     private String function;
     private String username;
     private String password;
+    private String enterprise;
+
+    public String getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(String enterprise) {
+        this.enterprise = enterprise;
+    }
 
     public String getId() {
         return id;

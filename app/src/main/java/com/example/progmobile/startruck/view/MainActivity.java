@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.progmobile.startruck.R;
-import com.example.progmobile.startruck.controller.EnterpriseController;
 import com.example.progmobile.startruck.controller.UserController;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         edtName = findViewById(R.id.edtNome);
         edtPassword = findViewById(R.id.edtPassword);
 
-        enterpriseSpinner();
     }
 
     public void onClickRegisterUser(View v){
@@ -59,32 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void enterpriseSpinner(){
-        EnterpriseController ec = new EnterpriseController();
-        etpSpinner = findViewById(R.id.enterpriseSpinner);
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, ec.spinnerArrayList(this));
-        itemsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        etpSpinner.setAdapter(itemsAdapter);
-
-
-        etpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-                if(parent.getItemAtPosition(position).toString().equals("Minha empresa não esta na lista")){
-                    Intent itt = new Intent(MainActivity.this, EnterpriseRegister.class);
-                    startActivity(itt);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-    }
 
 
 

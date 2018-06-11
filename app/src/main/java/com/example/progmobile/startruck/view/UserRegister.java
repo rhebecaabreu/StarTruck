@@ -12,7 +12,7 @@ import com.example.progmobile.startruck.R;
 import com.example.progmobile.startruck.controller.UserController;
 
 public class UserRegister extends AppCompatActivity {
-    private EditText edtFirstName, edtLastName, edtEmail, edtFunction, edtUsername, edtPasswd, edtPasswd2;
+    private EditText edtFirstName, edtEnterprise, edtLastName, edtEmail, edtFunction, edtUsername, edtPasswd, edtPasswd2;
     UserController user;
 
     @Override
@@ -26,6 +26,7 @@ public class UserRegister extends AppCompatActivity {
         edtFirstName = findViewById(R.id.edtFirstName);
         edtLastName = findViewById(R.id.edtLastName);
         edtFunction = findViewById(R.id.edtFunction);
+        edtEnterprise = findViewById(R.id.edtEnterprise);
         edtEmail = findViewById(R.id.edtEmail);
         edtUsername = findViewById(R.id.edtUsername);
         edtPasswd = findViewById(R.id.edtPassword);
@@ -40,11 +41,12 @@ public class UserRegister extends AppCompatActivity {
         String function = edtFunction.getText().toString();
         String email = edtEmail.getText().toString();
         String username = edtUsername.getText().toString();
+        String enterprise = edtEnterprise.getText().toString();
         String password = edtPasswd.getText().toString();
         String confPasswd = edtPasswd2.getText().toString();
 
-        if(firstName.trim().isEmpty() || lastName.trim().isEmpty() ||
-                function.trim().isEmpty() || email.trim().isEmpty() ||
+        if(firstName.trim().isEmpty() || lastName.trim().isEmpty() || enterprise.trim().isEmpty()
+               || function.trim().isEmpty() || email.trim().isEmpty() ||
                 username.trim().isEmpty() || password.trim().isEmpty() || confPasswd.trim().isEmpty() ){
             Toast toast = Toast.makeText(UserRegister.this,"Por favor, preencha todos os campos!", Toast.LENGTH_SHORT);
             toast.show();
@@ -55,7 +57,7 @@ public class UserRegister extends AppCompatActivity {
             edtPasswd2.setText("");
             edtPasswd.requestFocus();
         }else {
-            user.save(this, firstName, lastName, function, email, username, password);
+            user.save(this, firstName, lastName, enterprise, function, email, username, password);
             Toast toast = Toast.makeText(UserRegister.this,"Cadastro realizado com sucesso!",
                     Toast.LENGTH_SHORT);
             toast.show();

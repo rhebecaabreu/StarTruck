@@ -20,7 +20,6 @@ public class DriverDAO {
     private static final String COLUMN_PHONE = "phone" ;
     private static final String COLUMN_RG = "rg";
     private static final String COLUMN_ID_USER = "userId" ;
-    private static final String COLUMN_ID_ENTERPRISE = "enterpriseId";
 
 
     SQLiteDatabase db, db2;
@@ -34,9 +33,7 @@ public class DriverDAO {
                     "rg text not null, "+
                     "phone text not null unique, " +
                     "userId integer not null, " +
-                    "enterpriseId integer not null,"+
                     "FOREIGN KEY (userId) REFERENCES user(idUser) ON UPDATE NO ACTION ON DELETE CASCADE,"+
-                    "FOREIGN KEY (enterpriseId) REFERENCES enterprise(idEnterprise) ON UPDATE CASCADE ON DELETE CASCADE,"+
                     "PRIMARY KEY(idDriver))";
 
     public static final String TABLE_DROP_DRIVER = "DROP TABLE IF EXISTS "+TABLE_NAME;

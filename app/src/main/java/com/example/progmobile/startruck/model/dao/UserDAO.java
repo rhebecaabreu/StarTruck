@@ -21,6 +21,8 @@ public class UserDAO {
     private static final String COLUMN_FUNCTION = "function" ;
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_ENTERPRISE = "enterprise";
+
 
     private SQLiteDatabase db = null, db2;
 
@@ -37,6 +39,7 @@ public class UserDAO {
                 "function text not null, "+
                 "username text not null unique, "+
                 "password text not null, "+
+                "enterprise text not null,"+
                 "PRIMARY KEY(idUser))";
 
     private static UserDAO instance;
@@ -65,6 +68,8 @@ public class UserDAO {
         values.put(COLUMN_FUNCTION, u.getFunction());
         values.put(COLUMN_USERNAME, u.getUsername());
         values.put(COLUMN_PASSWORD, u.getPassword());
+        values.put(COLUMN_ENTERPRISE, u.getEnterprise());
+
 
         db.insert(TABLE_NAME, null, values);
         db.close();
