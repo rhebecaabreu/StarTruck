@@ -31,6 +31,14 @@ public class VehicleListFragment extends Fragment {
     String yy;
     public static String NAME_VEHICLE;
 
+    public static String getNameVehicle() {
+        return NAME_VEHICLE;
+    }
+
+    public static void setNameVehicle(String nameVehicle) {
+        NAME_VEHICLE = nameVehicle;
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         vehicleListView = inflater.inflate(R.layout.activity_vehicle_list, container, false);
 
@@ -47,13 +55,12 @@ public class VehicleListFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 yy = arrayAdapter.getItem(position);
+                System.out.println("yy "+ yy);
+                setNameVehicle(yy);
 
                 return false;
             }
         });
-
-        NAME_VEHICLE=yy;
-
 
         return vehicleListView;
     }

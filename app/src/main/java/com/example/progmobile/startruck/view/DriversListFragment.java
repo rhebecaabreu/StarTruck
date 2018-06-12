@@ -49,6 +49,8 @@ public class DriversListFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 yy = arrayAdapter.getItem(position);
+
+               System.out.println("driver "+yy);
                 return false;
             }
         });

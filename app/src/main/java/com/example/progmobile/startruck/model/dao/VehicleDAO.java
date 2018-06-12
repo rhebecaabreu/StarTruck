@@ -168,7 +168,7 @@ public class VehicleDAO {
 
 
         String query = "UPDATE " +TABLE_NAME+ " SET status = '" +status+ "'"+
-                " WHERE name = '" +vehicle+ "';";
+                " WHERE nameVehicle = '" +vehicle+ "';";
         try {
             db.execSQL(query);
         }

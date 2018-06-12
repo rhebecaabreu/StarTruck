@@ -153,6 +153,10 @@ public class Main3Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_reports){
 
+        } else if (id == R.id.nav_home) {
+
+            fragmentManager.beginTransaction().replace(R.id.fragment, new HomeFragment()).commit();
+
         }
 
 

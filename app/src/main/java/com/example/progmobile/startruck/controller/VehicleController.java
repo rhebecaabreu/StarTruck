@@ -14,6 +14,7 @@ public class VehicleController {
                      String axess, String capacityy, String observationn) {
         VehicleDAO vdao = new VehicleDAO(context);
 
+        System.out.println(typeVehicle);
         v.setTypeVehicle(typeVehicle);
         v.setNameVehicle(name);
         v.setPlate(platee);

@@ -32,7 +32,8 @@ public class Status extends Fragment{
         type = status.findViewById(R.id.txtType);
         VehicleDAO x = new VehicleDAO(getActivity());
 
-        name = VehicleListFragment.NAME_VEHICLE;
+        name = VehicleListFragment.getNameVehicle();
+        System.out.println(name);
         vehicleName.setText("Nome do veículo: "+name);
         type.setText("Tipo de veículo: "+ x.selectTypeByName(name));
 
@@ -47,13 +48,7 @@ public class Status extends Fragment{
 
                 statusVehicle = spinner.getSelectedItem().toString();
 
-                if(statusVehicle.equals("Selecione")){
 
-
-                } else {
-
-
-                }
             }
             public void onNothingSelected(AdapterView<?> adapterView) {
                 return;
@@ -66,7 +61,16 @@ public class Status extends Fragment{
             @Override
             public void onClick(View v) {
                 VehicleDAO x = new VehicleDAO(getActivity());
-                x.update(name,statusVehicle);            }
+                if(statusVehicle.equals("Selecione")){
+                    Toast.makeText(getActivity(),"Por favor, selecione o status que deseja atribuir ao veículo!",Toast.LENGTH_SHORT).show();
+
+                }else {
+                    x.update(name, statusVehicle);
+                    Toast.makeText(getActivity(),"Status atualizado com sucesso!",Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
         });
 
 
