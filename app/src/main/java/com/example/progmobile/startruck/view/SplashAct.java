@@ -4,26 +4,29 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.progmobile.startruck.R;
+import android.os.Handler;
+
 
 public class SplashAct extends AppCompatActivity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Thread thread = new Thread(){
+        getSupportActionBar().hide();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    sleep(3000);
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                mostrarMainActivity();
             }
-        };
-        thread.start();
+        }, 2000);
+    }
+
+    private void mostrarMainActivity() {
+        Intent intent = new Intent(
+                SplashAct.this,MainActivity.class
+        );
+        startActivity(intent);
+        finish();
     }
 }

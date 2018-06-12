@@ -9,6 +9,16 @@ public class Driver {
     private String Phone;
     private int userId;
 
+    public Driver(String Name, String cpf) {
+        this.Name = Name;
+        this.CPF = cpf;
+
+    }
+
+    public Driver() {
+
+    }
+
     public int getUserId() {
         return userId;
     }

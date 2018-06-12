@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DriversListFragment">
+    tools:context=".view.VehicleListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/background_light"
         android:orientation="vertical"
         app2:layout_constraintBottom_toBottomOf="parent"
         app2:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +25,7 @@
 
 
         <ListView
-            android:id="@+id/listDrivers"
+            android:id="@+id/listVehicle"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

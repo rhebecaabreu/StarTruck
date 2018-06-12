@@ -2,9 +2,15 @@ package com.example.progmobile.startruck.model.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.Settings;
 
 import com.example.progmobile.startruck.model.bean.Vehicle;
+import com.example.progmobile.startruck.model.bean.Vehicle;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class VehicleDAO {
 
@@ -23,7 +29,7 @@ public class VehicleDAO {
     private static final String COLUMN_USERID = "userId";
 
 
-    private SQLiteDatabase db = null, db2;
+    private SQLiteDatabase db, db2;
 
 
     public static final String TABLE_DROP_VEHICLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
@@ -59,25 +65,65 @@ public class VehicleDAO {
         db2= bdHelper.getReadableDatabase();
     }
 
-    public void insert(Vehicle v, boolean heavyLoad){
+    public void insertVehicle(Vehicle v){
         ContentValues values = new ContentValues();
-
+    try {
         values.put(COLUMN_TYPEVEHICLE, v.getTypeVehicle());
         values.put(COLUMN_NAMEVEHICLE, v.getNameVehicle());
         values.put(COLUMN_plate, v.getPlate());
         values.put(COLUMN_MARK, v.getMark());
         values.put(COLUMN_FUEL, v.getFuelType());
 
-        if(heavyLoad){
-            values.put(COLUMN_AXES, v.getAxesNumber());
-            values.put(COLUMN_CAPACITY, v.getCapacity());
-        }
+        values.put(COLUMN_AXES, v.getAxesNumber());
+        values.put(COLUMN_CAPACITY, v.getCapacity());
 
         values.put(COLUMN_STATUS, v.getStatus());
         values.put(COLUMN_OBSERVATION, v.getObservation());
         values.put(COLUMN_USERID, v.getUserId());
 
         db.insert(TABLE_NAME, null, values);
+        System.out.println("inseriu");
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
         db.close();
+    }
+
+    public ArrayList<Vehicle> selectVehicles(int userId){
+        String query = "SELECT userId, typeVehicle, nameVehicle, plate, mark FROM "+TABLE_NAME;
+
+        Cursor cursor = db2.rawQuery(query, null);
+
+        ArrayList<Vehicle> listVehicles = new ArrayList<Vehicle>();
+
+        String name,type, plate, mark;
+
+        int user;
+        if(cursor.moveToFirst()){
+            System.out.println("hum");
+            while (cursor.moveToNext()){
+                user = cursor.getInt(0);
+                System.out.println(userId +" "+ user);
+                if(userId==user){
+                    System.out.println("dois");
+
+                    name = cursor.getString(2);
+                    type = cursor.getString(1);
+                    plate = cursor.getString(3);
+                    mark = cursor.getString(4);
+
+                    Vehicle v = new Vehicle(name, type, plate, mark);
+                    listVehicles.add(v);
+
+                }
+
+            }
+
+
+        }
+
+        return listVehicles;
+
     }
 }

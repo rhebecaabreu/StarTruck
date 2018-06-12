@@ -91,6 +91,8 @@ public class VehicleRegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                System.out.println("entrei no save");
+
                 String name = nameVehicle.getText().toString();
                 String markk = mark.getText().toString();
                 String platee = plate.getText().toString();
@@ -112,12 +114,17 @@ public class VehicleRegisterFragment extends Fragment {
                     VehicleController vdao = new VehicleController();
 
                     if(heavyLoad==true){
-                        vdao.save(getActivity(), typeVehicle, name, platee, markk, typeFuel, Integer.parseInt(axess), Integer.parseInt(capacityy), observationn);
-                        Toast.makeText(getActivity(),"Cadastro realizado com sucesso",Toast.LENGTH_SHORT).show();
-                    } else {
-                        vdao.save2(getActivity(),typeVehicle, name, platee, markk, typeFuel, observationn);
-                        Toast.makeText(getActivity(),"Cadastro realizado com sucesso",Toast.LENGTH_SHORT).show();
+                        vdao.save(getActivity(), typeVehicle, name, platee, markk, typeFuel, axess,capacityy, observationn);
+                        System.out.println("if save 1");
+
+                    }else {
+                        vdao.save(getActivity(), typeVehicle, name, platee, markk, typeFuel,null, null, observationn);
+                        System.out.println("if save 2");
+
                     }
+
+                    Toast.makeText(getActivity(),"Cadastro realizado com sucesso",Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

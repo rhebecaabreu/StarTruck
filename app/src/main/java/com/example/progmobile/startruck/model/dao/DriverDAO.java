@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.progmobile.startruck.model.bean.Driver;
 import com.example.progmobile.startruck.model.bean.User;
 
+import java.util.ArrayList;
+
 public class DriverDAO {
 
     private static final String TABLE_NAME = "driver";
@@ -27,7 +29,7 @@ public class DriverDAO {
     public static final String TABLE_CREATE_DRIVER =
             "CREATE TABLE driver ("+
                     "idDriver integer not null, " +
-                    "name text not null, "+
+                    "name text not null unique, "+
                     "cpf text not null, "+
                     "email text not null, "+
                     "rg text not null, "+
@@ -67,6 +69,38 @@ public class DriverDAO {
         db.insert(TABLE_NAME, null, values);
     }
 
+
+    public ArrayList<Driver> selectDrivers(int userId){
+        String query = "SELECT userId, name, cpf, email, rg, phone FROM "+TABLE_NAME;
+
+        Cursor cursor = db2.rawQuery(query, null);
+
+        ArrayList<Driver> listDrivers = new ArrayList<Driver>();
+
+        String name,cpf;
+
+        int user;
+        if(cursor.moveToFirst()){
+            while (cursor.moveToNext()){
+                user = cursor.getInt(0);
+                if(userId==user){
+                    name = cursor.getString(1);
+                    cpf = cursor.getString(2);
+
+                    Driver d = new Driver(name, cpf);
+                    listDrivers.add(d);
+
+                }
+
+            }
+
+
+        }
+
+        return listDrivers;
+
+    }
+
     public int searchDriverID(String Nome){
         String query = "SELECT name, idDriver FROM " + TABLE_NAME;
         Cursor cursor = db2.rawQuery(query, null);
@@ -83,6 +117,21 @@ public class DriverDAO {
             } while (cursor.moveToNext());
         }
         return -1;
+    }
+
+
+    public long delete(String name_x){
+        String query = "DELETE FROM " +TABLE_NAME+ " WHERE name = '" +name_x+ "';";
+        try{
+            db2.execSQL(query);
+            System.out.println("Deu bom pra excluir");
+
+        }catch (Exception e){
+            System.out.println("Deu ruim pra excluir");
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     public void update(){

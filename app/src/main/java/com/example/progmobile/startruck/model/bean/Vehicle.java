@@ -19,6 +19,13 @@ public class Vehicle {
 
     }
 
+    public Vehicle(String name, String type, String plate, String mark) {
+        this.nameVehicle = name;
+        this.typeVehicle = type;
+        this.plate = plate;
+        this.mark = mark;
+    }
+
     public String getStatus() {
         return status;
     }

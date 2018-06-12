@@ -33,7 +33,7 @@
         <Spinner
             android:id="@+id/spinnerTypeV"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="38dp" />
 
         <TextView
             android:id="@+id/textView17"
@@ -174,7 +174,7 @@
         <Button
             android:id="@+id/btnSaveVehicle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/colorButtons"
             android:text="@string/btn_save"
             android:textColor="@color/colorTextButtons" />

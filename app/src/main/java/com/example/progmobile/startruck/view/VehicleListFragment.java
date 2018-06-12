@@ -2,7 +2,6 @@ package com.example.progmobile.startruck.view;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -13,39 +12,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.progmobile.startruck.R;
 import com.example.progmobile.startruck.model.bean.Driver;
+import com.example.progmobile.startruck.model.bean.Vehicle;
 import com.example.progmobile.startruck.model.dao.DriverDAO;
+import com.example.progmobile.startruck.model.dao.VehicleDAO;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class DriversListFragment extends Fragment {
-    View driversListView;
+public class VehicleListFragment extends Fragment {
+    View vehicleListView;
 
-    ListView drivers;
+    ListView vehicleList;
     Driver dd;
-
     String yy;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        driversListView = inflater.inflate(R.layout.activity_drivers_list, container, false);
+        vehicleListView = inflater.inflate(R.layout.activity_vehicle_list, container, false);
 
-        drivers = driversListView.findViewById(R.id.listDrivers);
-
+        vehicleList = vehicleListView.findViewById(R.id.listVehicle);
 
         final ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, driverArray(getActivity()));
+                android.R.layout.simple_list_item_1, vehicleArray(getActivity()));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-        drivers.setAdapter(arrayAdapter);
-        registerForContextMenu(drivers);
+        vehicleList.setAdapter(arrayAdapter);
+        registerForContextMenu(vehicleList);
 
 
-        drivers.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        vehicleList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 yy = arrayAdapter.getItem(position);
@@ -54,37 +51,50 @@ public class DriversListFragment extends Fragment {
         });
 
 
-        return driversListView;
+        return vehicleListView;
     }
+    public static ArrayList<String> vehicleArray(Context context){
+        ArrayList<String> vehicle = new ArrayList<String>();
 
+        VehicleDAO d = new VehicleDAO(context);
+        vehicle.clear();
 
-    public static ArrayList<String> driverArray(Context context){
-        ArrayList<String> driver = new ArrayList<String>();
-        DriverDAO d = new DriverDAO(context);
-        driver.clear();
-
-        for(Driver dv : d.selectDrivers(MainActivity.usr)) {
-            driver.add(dv.getName());
+        for(Vehicle dv : d.selectVehicles(MainActivity.usr)) {
+            vehicle.add(dv.getNameVehicle());
         }
-        return driver;
+
+        return vehicle;
     }
+
 
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(Menu.NONE, 0, Menu.NONE, "Excluir motorista");
+
+        menu.add(Menu.NONE, 0, Menu.NONE, "Excluir veículo");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Editar veículo");
+        menu.add(Menu.NONE, 2, Menu.NONE, "Alterar status");
+
     }
 
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 0:
-                DriverDAO d = new DriverDAO(getActivity());
-                d.delete(yy.trim());
-                driverArray(getActivity());
+                Log.i("ContextMenu", "Item 1a was chosen");
+                return true;
+
+            case 1:
+                Log.i("ContextMenu", "Item 2a was chosen");
+                return true;
+            case 2:
+                Log.i("ContextMenu", "Item 3a was chosen");
                 return true;
 
         }
         return super.onContextItemSelected(item);
     }
+
+
+
 
 
 }

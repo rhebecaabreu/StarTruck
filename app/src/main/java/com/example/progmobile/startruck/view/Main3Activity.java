@@ -13,14 +13,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.progmobile.startruck.R;
+
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+
+
 public class Main3Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    LinearLayout a;
     private TextView username;
     private TextView name;
 
@@ -29,7 +33,9 @@ public class Main3Activity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("StarTruck");
         setSupportActionBar(toolbar);
 
         fabMenu();
@@ -116,10 +122,10 @@ public class Main3Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
-
+        String bar;
 
         if (id == R.id.nav_veihcle) {
-            // Handle the camera action
+            fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleListFragment()).commit();
         } else if (id == R.id.nav_maintenance) {
 
         } else if (id == R.id.nav_stock) {
@@ -133,6 +139,7 @@ public class Main3Activity extends AppCompatActivity
         } else if (id == R.id.nav_reports){
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
