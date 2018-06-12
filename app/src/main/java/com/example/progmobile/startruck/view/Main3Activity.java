@@ -2,6 +2,7 @@ package com.example.progmobile.startruck.view;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,16 +19,22 @@ import android.widget.TextView;
 import com.example.progmobile.startruck.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+
+import java.util.jar.Attributes;
+
 public class Main3Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView username;
     private TextView name;
+    private TextView email;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,6 +49,13 @@ public class Main3Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header=navigationView.getHeaderView(0);
+        /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        name = (TextView)header.findViewById(R.id.edtUsername);
+        email = (TextView)header.findViewById(R.id.edtEmail);
+        name.setText(Attributes.Name);
+        email.setText(ContactsContract.CommonDataKinds.Email);
 
     }
 
