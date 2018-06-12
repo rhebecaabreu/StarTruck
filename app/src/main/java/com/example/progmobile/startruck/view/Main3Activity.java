@@ -14,17 +14,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.progmobile.startruck.R;
+
+import com.example.progmobile.startruck.model.dao.UserDAO;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
+<<<<<<< HEAD
 import java.util.jar.Attributes;
 
 public class Main3Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+=======
+
+public class Main3Activity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+    LinearLayout a;
+    private TextView enterprise;
+>>>>>>> 441340c6e0bd268d4967e01d3916a7d2a91a70da
     private TextView name;
     private TextView email;
     
@@ -37,6 +48,7 @@ public class Main3Activity extends AppCompatActivity
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("StarTruck");
         setSupportActionBar(toolbar);
 
         fabMenu();
@@ -50,12 +62,27 @@ public class Main3Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+<<<<<<< HEAD
         View header=navigationView.getHeaderView(0);
         /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
         name = (TextView)header.findViewById(R.id.edtUsername);
         email = (TextView)header.findViewById(R.id.edtEmail);
         name.setText(Attributes.Name);
         email.setText(ContactsContract.CommonDataKinds.Email);
+=======
+
+        View headerView = navigationView.getHeaderView(0);
+
+
+        name = headerView.findViewById(R.id.txtUsernameHeader);
+        enterprise = headerView.findViewById(R.id.txtNameHeader);
+
+        UserDAO udao= new UserDAO(Main3Activity.this);
+
+        name.setText(udao.searchFullName(MainActivity.usrname));
+        enterprise.setText(udao.searchEnterpriseById(MainActivity.usr));
+
+>>>>>>> 441340c6e0bd268d4967e01d3916a7d2a91a70da
 
     }
 
@@ -130,10 +157,10 @@ public class Main3Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
-
+        String bar;
 
         if (id == R.id.nav_veihcle) {
-            // Handle the camera action
+            fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleListFragment()).commit();
         } else if (id == R.id.nav_maintenance) {
 
         } else if (id == R.id.nav_stock) {
@@ -146,7 +173,12 @@ public class Main3Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_reports){
 
+        } else if (id == R.id.nav_home) {
+
+            fragmentManager.beginTransaction().replace(R.id.fragment, new HomeFragment()).commit();
+
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.progmobile.startruck.model.bean.Vehicle;
 
 public class BDHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 8;
     private static final String DATABASE_NAME = "StarTruckDB.db";
 
     SQLiteDatabase bd;

@@ -19,6 +19,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Inicio" />
+
+        <item
             android:id="@+id/nav_stock"
             android:icon="@drawable/baseline_next_week_24"
             android:title="Estoque da empresa" />
