@@ -90,6 +90,41 @@ public class VehicleDAO {
         db.close();
     }
 
+
+    public long delete(String name_x){
+        String query = "DELETE FROM " +TABLE_NAME+ " WHERE name = '" +name_x+ "';";
+        try{
+            db2.execSQL(query);
+            System.out.println("Deu bom pra excluir");
+
+        }catch (Exception e){
+            System.out.println("Deu ruim pra excluir");
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+
+
+    public String selectTypeByName(String name){
+        String query = "SELECT  typeVehicle, nameVehicle FROM "+TABLE_NAME;
+        Cursor cursor = db2.rawQuery(query, null);
+        String type="not found";
+        if(cursor.moveToFirst()){
+            while(cursor.moveToNext()){
+
+                if(cursor.getString(1).equals(name)) {
+                    type = cursor.getString(0);
+                    System.out.println(type);
+
+                }
+            }
+        }
+
+        return type;
+    }
+
     public ArrayList<Vehicle> selectVehicles(int userId){
         String query = "SELECT userId, typeVehicle, nameVehicle, plate, mark FROM "+TABLE_NAME;
 
@@ -125,5 +160,23 @@ public class VehicleDAO {
 
         return listVehicles;
 
+    }
+
+
+
+    public long update(String vehicle, String status){
+
+
+        String query = "UPDATE " +TABLE_NAME+ " SET status = '" +status+ "'"+
+                " WHERE name = '" +vehicle+ "';";
+        try {
+            db.execSQL(query);
+        }
+        catch (Exception e){
+            System.out.println("Deu ruim pra alterar");
+        }
+        db.close();
+
+        return 0;
     }
 }

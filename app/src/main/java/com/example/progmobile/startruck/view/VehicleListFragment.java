@@ -1,6 +1,7 @@
 package com.example.progmobile.startruck.view;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class VehicleListFragment extends Fragment {
     ListView vehicleList;
     Driver dd;
     String yy;
-
+    public static String NAME_VEHICLE;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         vehicleListView = inflater.inflate(R.layout.activity_vehicle_list, container, false);
@@ -46,9 +47,12 @@ public class VehicleListFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 yy = arrayAdapter.getItem(position);
+
                 return false;
             }
         });
+
+        NAME_VEHICLE=yy;
 
 
         return vehicleListView;
@@ -79,14 +83,19 @@ public class VehicleListFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 0:
-                Log.i("ContextMenu", "Item 1a was chosen");
+                VehicleDAO d = new VehicleDAO(getActivity());
+                d.delete(yy.trim());
+                vehicleArray(getActivity());
                 return true;
 
             case 1:
                 Log.i("ContextMenu", "Item 2a was chosen");
                 return true;
             case 2:
-                Log.i("ContextMenu", "Item 3a was chosen");
+
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment, new Status()).commit();
+
                 return true;
 
         }

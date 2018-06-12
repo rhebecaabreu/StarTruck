@@ -15,6 +15,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="spinnerStatus">
+        <item>Selecione</item>
+        <item>Veículo em viagem</item>
+        <item>Veículo em manutenção</item>
+        <item>Veículo na empresa</item>
+    </string-array>
 
     <string-array name="spinnerTypeVehicle">
         <item>Selecione</item>

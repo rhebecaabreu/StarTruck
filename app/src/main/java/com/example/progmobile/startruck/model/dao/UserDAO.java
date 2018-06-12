@@ -136,5 +136,23 @@ public class UserDAO {
     }
 
 
+    public String searchEnterpriseById(int usr) {
+        String query = "SELECT idUser, enterprise FROM " + TABLE_NAME;
+        Cursor cursor = db2.rawQuery(query, null);
+        int a;
+        String enterprise = "Nome não encontrado";
+
+        if (cursor.moveToFirst()) {
+            do {
+                a = cursor.getInt(0);
+                if (a==usr) {
+                    enterprise=cursor.getString(1);
+                }
+            } while (cursor.moveToNext());
+        }
+        return enterprise;
+
+
+    }
 }
 

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.progmobile.startruck.R;
 
+import com.example.progmobile.startruck.model.dao.UserDAO;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -25,13 +26,14 @@ import com.github.clans.fab.FloatingActionMenu;
 public class Main3Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout a;
-    private TextView username;
+    private TextView enterprise;
     private TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -48,6 +50,19 @@ public class Main3Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        View headerView = navigationView.getHeaderView(0);
+
+
+        name = headerView.findViewById(R.id.txtUsernameHeader);
+        enterprise = headerView.findViewById(R.id.txtNameHeader);
+
+        UserDAO udao= new UserDAO(Main3Activity.this);
+
+        name.setText(udao.searchFullName(MainActivity.usrname));
+        enterprise.setText(udao.searchEnterpriseById(MainActivity.usr));
+
 
     }
 
