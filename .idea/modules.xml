@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/StarTruck.iml" filepath="$PROJECT_DIR$/StarTruck.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProgMovelFinal.iml" filepath="$PROJECT_DIR$/ProgMovelFinal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
