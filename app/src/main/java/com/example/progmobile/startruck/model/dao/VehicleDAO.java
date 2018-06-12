@@ -12,15 +12,14 @@ public class VehicleDAO {
 
     private static final String COLUMN_ID = "idVehicle";
     private static final String COLUMN_TYPEVEHICLE = "typeVehicle";
+    private static final String COLUMN_NAMEVEHICLE ="nameVehicle";
     private static final String COLUMN_plate = "plate";
-    private static final String COLUMN_YEAR = "year" ;
     private static final String COLUMN_MARK = "mark";
     private static final String COLUMN_FUEL = "fuelType";
-    private static final String COLUMN_COLOR = "color";
     private static final String COLUMN_AXES = "axesNumber";
     private static final String COLUMN_CAPACITY = "capacity";
+    private static final String COLUMN_STATUS = "status";
     private static final String COLUMN_OBSERVATION ="observation";
-    private static final String COLUMN_TYPEHL = "typeHeavyLoad";
     private static final String COLUMN_USERID = "userId";
 
 
@@ -34,11 +33,11 @@ public class VehicleDAO {
             "CREATE TABLE vehicle ("+
                     "idVehicle integer not null,  " +
                     "typeVehicle text not null,"+
+                    "nameVehicle text not null,"+
                     "plate text not null, "+
-                    "year integer not null, "+
                     "mark text not null, "+
                     "fuelType text not null, "+
-                    "color text not null, "+
+                    "status text, "+
                     "axesNumber integer, " +
                     "capacity integer, "+
                     "observation text, "+
@@ -63,19 +62,18 @@ public class VehicleDAO {
     public void insert(Vehicle v, boolean heavyLoad){
         ContentValues values = new ContentValues();
 
-        values.put(COLUMN_TYPEVEHICLE, v.getId());
+        values.put(COLUMN_TYPEVEHICLE, v.getTypeVehicle());
+        values.put(COLUMN_NAMEVEHICLE, v.getNameVehicle());
         values.put(COLUMN_plate, v.getPlate());
-        values.put(COLUMN_YEAR, v.getYearManufacture());
         values.put(COLUMN_MARK, v.getMark());
         values.put(COLUMN_FUEL, v.getFuelType());
-        values.put(COLUMN_COLOR, v.getColor());
 
         if(heavyLoad){
             values.put(COLUMN_AXES, v.getAxesNumber());
             values.put(COLUMN_CAPACITY, v.getCapacity());
         }
 
-
+        values.put(COLUMN_STATUS, v.getStatus());
         values.put(COLUMN_OBSERVATION, v.getObservation());
         values.put(COLUMN_USERID, v.getUserId());
 

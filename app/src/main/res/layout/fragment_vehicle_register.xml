@@ -35,6 +35,19 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" />
 
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome do veículo" />
+
+        <EditText
+            android:id="@+id/edtVehicleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +55,7 @@
 
             <TextView
                 android:id="@+id/textView20"
-                android:layout_width="114dp"
+                android:layout_width="38dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Placa" />
@@ -52,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ano de fabricação" />
+                android:text="Marca" />
 
         </LinearLayout>
 
@@ -62,7 +75,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/btnPlate"
+                android:id="@+id/edtPlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -70,25 +83,18 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/btnYear"
+                android:id="@+id/edtMark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Marca" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -102,14 +108,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/edtMark"
-                android:layout_width="47dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
 
             <Spinner
                 android:id="@+id/spinnerFuel"
@@ -125,13 +123,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView23"
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cor" />
-
-            <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -143,14 +134,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/edtColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/edtAxes"
@@ -172,7 +155,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="number"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView27"
@@ -183,12 +167,12 @@
         <EditText
             android:id="@+id/edtObservation"
             android:layout_width="match_parent"
-            android:layout_height="89dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSaveVehicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorButtons"

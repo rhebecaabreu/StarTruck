@@ -3,14 +3,14 @@ package com.example.progmobile.startruck.model.bean;
 public class Vehicle {
     //plate, year of manufacture, mark, type of fuel, color
     private int id;
+    private String nameVehicle;
     private String typeVehicle;
     private String plate;
-    private int yearManufacture;
     private String mark;
     private String fuelType; //gasoline, ethanol, diesel, natural gas
-    private String color;
     private int axesNumber;
     private int capacity;
+    private String status;
     private String observation;
     private int userId;
 
@@ -19,20 +19,21 @@ public class Vehicle {
 
     }
 
-    public Vehicle(int id, String typeVehicle, String plate, int yearManufacture, String mark, String fuelType, String color, int axesNumber, int capacity, String observation, int userId) {
-        this.id = id;
-        this.typeVehicle = typeVehicle;
-        this.plate = plate;
-        this.yearManufacture = yearManufacture;
-        this.mark = mark;
-        this.fuelType = fuelType;
-        this.color = color;
-        this.axesNumber = axesNumber;
-        this.capacity = capacity;
-        this.observation = observation;
-        this.userId = userId;
+    public String getStatus() {
+        return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNameVehicle() {
+        return nameVehicle;
+    }
+
+    public void setNameVehicle(String nameVehicle) {
+        this.nameVehicle = nameVehicle;
+    }
 
     public int getId() {
         return id;
@@ -55,13 +56,6 @@ public class Vehicle {
         this.plate = plate;
     }
 
-    public int getYearManufacture() {
-        return yearManufacture;
-    }
-
-    public void setYearManufacture(int yearManufacture) {
-        this.yearManufacture = yearManufacture;
-    }
 
     public String getMark() {
         return mark;
@@ -77,14 +71,6 @@ public class Vehicle {
 
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public int getAxesNumber() {
