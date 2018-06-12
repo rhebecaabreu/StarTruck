@@ -1,6 +1,7 @@
 package com.example.progmobile.startruck.view;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +68,9 @@ public class Status extends Fragment{
                 }else {
                     x.update(name, statusVehicle);
                     Toast.makeText(getActivity(),"Status atualizado com sucesso!",Toast.LENGTH_SHORT).show();
+                    FragmentManager fragmentManager = getFragmentManager();
+
+                    fragmentManager.beginTransaction().replace(R.id.fragment, new HomeFragment()).commit();
 
                 }
 
