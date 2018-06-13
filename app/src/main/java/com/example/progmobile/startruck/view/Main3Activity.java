@@ -2,6 +2,7 @@ package com.example.progmobile.startruck.view;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,12 +23,22 @@ import com.example.progmobile.startruck.model.dao.UserDAO;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
+<<<<<<< HEAD
+import java.util.jar.Attributes;
+
+public class Main3Activity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+=======
 
 public class Main3Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout a;
     private TextView enterprise;
+>>>>>>> 441340c6e0bd268d4967e01d3916a7d2a91a70da
     private TextView name;
+    private TextView email;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +62,14 @@ public class Main3Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+<<<<<<< HEAD
+        View header=navigationView.getHeaderView(0);
+        /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        name = (TextView)header.findViewById(R.id.edtUsername);
+        email = (TextView)header.findViewById(R.id.edtEmail);
+        name.setText(Attributes.Name);
+        email.setText(ContactsContract.CommonDataKinds.Email);
+=======
 
         View headerView = navigationView.getHeaderView(0);
 
@@ -63,6 +82,7 @@ public class Main3Activity extends AppCompatActivity
         name.setText(udao.searchFullName(MainActivity.usrname));
         enterprise.setText(udao.searchEnterpriseById(MainActivity.usr));
 
+>>>>>>> 441340c6e0bd268d4967e01d3916a7d2a91a70da
 
     }
 
