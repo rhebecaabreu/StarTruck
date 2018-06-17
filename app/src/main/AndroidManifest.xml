@@ -22,7 +22,6 @@
 
         <activity android:name=".view.MainActivity"></activity>
         <activity android:name=".view.UserRegister" />
-        <activity android:name=".view.Main2Activity" />
         <activity
             android:name=".view.Main3Activity"
             android:label="@string/title_activity_main3"

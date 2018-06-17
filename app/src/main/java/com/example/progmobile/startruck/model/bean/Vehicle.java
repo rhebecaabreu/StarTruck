@@ -14,9 +14,15 @@ public class Vehicle {
     private String observation;
     private int userId;
 
-
     public Vehicle(){
 
+    }
+    public Vehicle(String name, String type, String plate, String mark, String status){
+        this.nameVehicle = name;
+        this.typeVehicle = type;
+        this.plate = plate;
+        this.mark = mark;
+        this.status = status;
     }
 
     public Vehicle(String name, String type, String plate, String mark) {
@@ -24,6 +30,23 @@ public class Vehicle {
         this.typeVehicle = type;
         this.plate = plate;
         this.mark = mark;
+    }
+
+    public Vehicle(String name, String type, String plate, String mark, String status, int axesNumber, int capacity, String observation, String fuel) {
+        this.nameVehicle = name;
+        this.typeVehicle = type;
+        this.plate = plate;
+        this.mark = mark;
+        this.status = status;
+        this.axesNumber = axesNumber;
+        this.capacity = capacity;
+        this.observation = observation;
+        this.fuelType = fuel;
+    }
+
+    public Vehicle(String nameVehicle, String typeVehicle) {
+        this.nameVehicle = nameVehicle;
+        this.typeVehicle = typeVehicle;
     }
 
     public String getStatus() {
@@ -110,6 +133,10 @@ public class Vehicle {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

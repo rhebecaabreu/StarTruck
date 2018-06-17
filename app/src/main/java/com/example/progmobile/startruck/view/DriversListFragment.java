@@ -59,6 +59,11 @@ public class DriversListFragment extends Fragment {
         return driversListView;
     }
 
+    public void onResume(){
+        super.onResume();
+        driverArray(getActivity());
+    }
+
 
     public static ArrayList<String> driverArray(Context context){
         ArrayList<String> driver = new ArrayList<String>();

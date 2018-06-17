@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,7 +17,6 @@ import android.widget.ListView;
 import com.example.progmobile.startruck.R;
 import com.example.progmobile.startruck.model.bean.Driver;
 import com.example.progmobile.startruck.model.bean.Vehicle;
-import com.example.progmobile.startruck.model.dao.DriverDAO;
 import com.example.progmobile.startruck.model.dao.VehicleDAO;
 
 import java.util.ArrayList;
@@ -28,8 +26,9 @@ public class VehicleListFragment extends Fragment {
 
     ListView vehicleList;
     Driver dd;
-    String yy;
-    public static String NAME_VEHICLE;
+    String nameVehicle;
+    public static String NAME_VEHICLE = "";
+    public static boolean EDIT_VEHICLE = false;
 
     public static String getNameVehicle() {
         return NAME_VEHICLE;
@@ -44,6 +43,10 @@ public class VehicleListFragment extends Fragment {
 
         vehicleList = vehicleListView.findViewById(R.id.listVehicle);
 
+        NAME_VEHICLE = "";
+        EDIT_VEHICLE = false;
+
+
         final ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, vehicleArray(getActivity()));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
@@ -54,9 +57,8 @@ public class VehicleListFragment extends Fragment {
         vehicleList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                yy = arrayAdapter.getItem(position);
-                System.out.println("yy "+ yy);
-                setNameVehicle(yy);
+                nameVehicle = arrayAdapter.getItem(position);
+                setNameVehicle(nameVehicle);
 
                 return false;
             }
@@ -64,6 +66,16 @@ public class VehicleListFragment extends Fragment {
 
         return vehicleListView;
     }
+
+
+    public void onResume(){
+        super.onResume();
+        vehicleArray(getActivity());
+        NAME_VEHICLE = "";
+        EDIT_VEHICLE = false;
+    }
+
+
     public static ArrayList<String> vehicleArray(Context context){
         ArrayList<String> vehicle = new ArrayList<String>();
 
@@ -84,23 +96,27 @@ public class VehicleListFragment extends Fragment {
         menu.add(Menu.NONE, 0, Menu.NONE, "Excluir veículo");
         menu.add(Menu.NONE, 1, Menu.NONE, "Editar veículo");
         menu.add(Menu.NONE, 2, Menu.NONE, "Alterar status");
-
     }
 
     public boolean onContextItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getFragmentManager();
+
         switch (item.getItemId()) {
+
             case 0:
                 VehicleDAO d = new VehicleDAO(getActivity());
-                d.delete(yy.trim());
+                d.delete(nameVehicle.trim());
                 vehicleArray(getActivity());
+                fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleListFragment()).commit();
+
                 return true;
 
             case 1:
-                Log.i("ContextMenu", "Item 2a was chosen");
+                EDIT_VEHICLE = true;
+                fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleRegisterFragment()).commit();
+
                 return true;
             case 2:
-
-                FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, new Status()).commit();
 
                 return true;

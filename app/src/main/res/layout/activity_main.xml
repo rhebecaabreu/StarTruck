@@ -16,6 +16,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/background_light"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,9 +25,13 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            
+            android:layout_width="307dp"
+            android:layout_height="232dp"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@drawable/startrucklogo"
+            android:padding="10dp"
             tools:layout_editor_absoluteX="59dp"
             tools:layout_editor_absoluteY="0dp" />
 

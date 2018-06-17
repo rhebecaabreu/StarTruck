@@ -21,11 +21,37 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Veículos em viagem" />
+                android:text="Veículos em viagem"
+                android:textColor="@color/colorButtons"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
 
             <ListView
+                android:id="@+id/listTravel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="168dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Veículos em manutenção"
+                android:textColor="@color/colorButtons"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/listMaintenance"
+                android:layout_width="match_parent"
+                android:layout_height="128dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -35,29 +61,16 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/tct"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Veículos em manutenção" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="164dp"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <TextView
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Veículos na empresa" />
+                android:text="Veículos na empresa"
+                android:textColor="@color/colorButtons"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ListView
+                android:id="@+id/listEnterprise"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

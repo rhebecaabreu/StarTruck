@@ -24,7 +24,7 @@ public class Status extends Fragment{
     String statusVehicle;
     TextView vehicleName, type;
 
-    String name;
+    String name, name2;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         status = inflater.inflate(R.layout.activity_status_vehicle, container, false);
@@ -34,6 +34,8 @@ public class Status extends Fragment{
         VehicleDAO x = new VehicleDAO(getActivity());
 
         name = VehicleListFragment.getNameVehicle();
+
+
         System.out.println(name);
         vehicleName.setText("Nome do veículo: "+name);
         type.setText("Tipo de veículo: "+ x.selectTypeByName(name));
@@ -49,7 +51,7 @@ public class Status extends Fragment{
 
                 statusVehicle = spinner.getSelectedItem().toString();
 
-
+                System.out.println(statusVehicle);
             }
             public void onNothingSelected(AdapterView<?> adapterView) {
                 return;

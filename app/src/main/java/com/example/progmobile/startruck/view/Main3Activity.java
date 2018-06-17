@@ -34,8 +34,6 @@ public class Main3Activity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("StarTruck");
         setSupportActionBar(toolbar);
@@ -51,9 +49,7 @@ public class Main3Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         View headerView = navigationView.getHeaderView(0);
-
 
         name = headerView.findViewById(R.id.txtUsernameHeader);
         enterprise = headerView.findViewById(R.id.txtNameHeader);
@@ -63,28 +59,29 @@ public class Main3Activity extends AppCompatActivity
         name.setText(udao.searchFullName(MainActivity.usrname));
         enterprise.setText(udao.searchEnterpriseById(MainActivity.usr));
 
-
     }
 
     public void fabMenu(){
         final FragmentManager fragmentManager = getFragmentManager();
-
         final FloatingActionButton fab_car, fab_driver;
-
-        final Animation fabOpen, fabClose;
-
         final FloatingActionMenu fab = (FloatingActionMenu) findViewById(R.id.fab);
+
         fab_car = (FloatingActionButton) findViewById(R.id.fab_vehicle);
         fab_driver = (FloatingActionButton) findViewById(R.id.fab_driver);
 
         fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+            public void onClick(View view) {
+                if (fab.isOpened()) {
+                    fab.close(true);
+                }
             }
         });
 
         fab_car.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleRegisterFragment()).commit();
+                fab.close(true);
 
 
             }
@@ -94,6 +91,7 @@ public class Main3Activity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 fragmentManager.beginTransaction().replace(R.id.fragment, new DriverRegisterFragment()).commit();
+                fab.close(true);
 
             }
         });
