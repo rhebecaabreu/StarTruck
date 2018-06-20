@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.progmobile.startruck.model.bean.Driver;
 import com.example.progmobile.startruck.model.bean.User;
+import com.example.progmobile.startruck.model.bean.Vehicle;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,8 @@ public class DriverDAO {
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PHONE = "phone" ;
     private static final String COLUMN_RG = "rg";
+    private static final String COLUMN_CNHnumber = "numberCNH";
+    private static final String COLUMN_CAT = "category";
     private static final String COLUMN_ID_USER = "userId" ;
 
 
@@ -35,6 +38,8 @@ public class DriverDAO {
                     "rg text not null, "+
                     "phone text not null unique, " +
                     "userId integer not null, " +
+                    "category text not null,"+
+                    "numberCNH integer not null,"+
                     "FOREIGN KEY (userId) REFERENCES user(idUser) ON UPDATE NO ACTION ON DELETE CASCADE,"+
                     "PRIMARY KEY(idDriver))";
 
@@ -64,6 +69,8 @@ public class DriverDAO {
         values.put(COLUMN_RG, d.getRG());
         values.put(COLUMN_PHONE, d.getPhone());
         values.put(COLUMN_ID_USER, d.getUserId());
+        values.put(COLUMN_CNHnumber, d.getCNHnumber());
+        values.put(COLUMN_CAT, d.getCatCnh());
 
 
         db.insert(TABLE_NAME, null, values);
@@ -71,7 +78,7 @@ public class DriverDAO {
 
 
     public ArrayList<Driver> selectDrivers(int userId){
-        String query = "SELECT userId, name, cpf, email, rg, phone FROM "+TABLE_NAME;
+        String query = "SELECT userId, name, cpf, email, rg, phone, category, numberCNH FROM "+TABLE_NAME;
 
         Cursor cursor = db2.rawQuery(query, null);
 
@@ -101,6 +108,43 @@ public class DriverDAO {
 
     }
 
+
+
+    public ArrayList<Driver> selectDriversByName(int userId, String driverName){
+        String query = "SELECT userId, name, cpf, email, rg, phone, category, numberCNH FROM "+TABLE_NAME;
+
+        Cursor cursor = db2.rawQuery(query, null);
+
+        ArrayList<Driver> listDrivers = new ArrayList<Driver>();
+
+        String name,cpf, email, rg, phone, category;
+        int numberCNH;
+
+        if(cursor.moveToFirst()){
+            while (cursor.moveToNext()){
+                if(userId==cursor.getInt(0) && driverName.equals(cursor.getString(1).toString())){
+                    name = cursor.getString(1);
+                    cpf = cursor.getString(2);
+                    email = cursor.getString(3);
+                    rg = cursor.getString(4);
+                    phone = cursor.getString(5);
+                    category = cursor.getString(6);
+                    numberCNH = cursor.getInt(7);
+                    Driver d = new Driver(name, rg, email, cpf, phone, numberCNH, category);
+                    listDrivers.add(d);
+
+                }
+
+            }
+
+
+        }
+
+        return listDrivers;
+
+    }
+
+
     public int searchDriverID(String Nome){
         String query = "SELECT name, idDriver FROM " + TABLE_NAME;
         Cursor cursor = db2.rawQuery(query, null);
@@ -120,21 +164,37 @@ public class DriverDAO {
     }
 
 
-    public long delete(String name_x){
+    public void delete(String name_x){
         String query = "DELETE FROM " +TABLE_NAME+ " WHERE name = '" +name_x+ "';";
         try{
             db2.execSQL(query);
             System.out.println("Deu bom pra excluir");
-
         }catch (Exception e){
             System.out.println("Deu ruim pra excluir");
             e.printStackTrace();
         }
-
-        return 0;
     }
 
-    public void update(){
+    public void updateDriver(Driver d){
+
+        String query = "UPDATE " +TABLE_NAME+
+                " SET " +
+                "name = '" +d.getName()+ "', "+
+                "cpf = '" +d.getCPF()+ "', "+
+                "email = '" + d.getEmail()+ "', "+
+                "rg = '" + d.getRG()+ "',  "+
+                "phone = '" + d.getPhone()+ "', "+
+                "category = '"+d.getCatCnh()+ "', "+
+                "numberCNH = '" +d.getCNHnumber()+ "' "+
+                " WHERE idDriver = '" +d.getId()+ "';";
+
+        try {
+            db2.execSQL(query);
+            System.out.println("updated");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        db2.close();
 
     }
 

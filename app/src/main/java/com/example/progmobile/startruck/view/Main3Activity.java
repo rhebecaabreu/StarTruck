@@ -38,6 +38,10 @@ public class Main3Activity extends AppCompatActivity
         toolbar.setTitle("StarTruck");
         setSupportActionBar(toolbar);
 
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment, new HomeFragment()).commit();
+
+
         fabMenu();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

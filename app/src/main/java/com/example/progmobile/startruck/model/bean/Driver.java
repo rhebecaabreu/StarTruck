@@ -1,22 +1,52 @@
 package com.example.progmobile.startruck.model.bean;
 
 public class Driver {
-    private String id;
+    private int id;
     private String Name;
     private String RG;
     private String email;
     private String CPF;
     private String Phone;
+    private int CNHnumber;
+    private String catCnh;
     private int userId;
 
     public Driver(String Name, String cpf) {
         this.Name = Name;
         this.CPF = cpf;
-
     }
 
     public Driver() {
 
+    }
+
+    public Driver(String name, String RG, String email, String CPF, String phone, int CNHnumber, String catCnh) {
+        Name = name;
+        this.RG = RG;
+        this.email = email;
+        this.CPF = CPF;
+        Phone = phone;
+        this.CNHnumber = CNHnumber;
+        this.catCnh = catCnh;
+    }
+
+
+
+
+    public int getCNHnumber() {
+        return CNHnumber;
+    }
+
+    public void setCNHnumber(int CNHnumber) {
+        this.CNHnumber = CNHnumber;
+    }
+
+    public String getCatCnh() {
+        return catCnh;
+    }
+
+    public void setCatCnh(String catCnh) {
+        this.catCnh = catCnh;
     }
 
     public int getUserId() {
@@ -35,11 +65,11 @@ public class Driver {
         Phone = phone;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

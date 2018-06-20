@@ -1,10 +1,9 @@
 package com.example.progmobile.startruck.view;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.progmobile.startruck.R;
@@ -21,16 +19,14 @@ import com.example.progmobile.startruck.model.bean.Driver;
 import com.example.progmobile.startruck.model.dao.DriverDAO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DriversListFragment extends Fragment {
     View driversListView;
-
     ListView drivers;
-    Driver dd;
+    public static String driverSelected;
+    ArrayAdapter<String> arrayAdapter;
 
-    String yy;
-
+    public static boolean EDIT_DRIVER = false;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         driversListView = inflater.inflate(R.layout.activity_drivers_list, container, false);
@@ -38,7 +34,7 @@ public class DriversListFragment extends Fragment {
         drivers = driversListView.findViewById(R.id.listDrivers);
 
 
-        final ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(getActivity(),
+        arrayAdapter= new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, driverArray(getActivity()));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         drivers.setAdapter(arrayAdapter);
@@ -48,9 +44,8 @@ public class DriversListFragment extends Fragment {
         drivers.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                yy = arrayAdapter.getItem(position);
-
-               System.out.println("driver "+yy);
+                driverSelected = arrayAdapter.getItem(position);
+                System.out.println("driver "+ driverSelected);
                 return false;
             }
         });
@@ -62,6 +57,7 @@ public class DriversListFragment extends Fragment {
     public void onResume(){
         super.onResume();
         driverArray(getActivity());
+        EDIT_DRIVER = false;
     }
 
 
@@ -78,15 +74,25 @@ public class DriversListFragment extends Fragment {
 
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+
         menu.add(Menu.NONE, 0, Menu.NONE, "Excluir motorista");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Editar motorista");
     }
 
     public boolean onContextItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getFragmentManager();
+
         switch (item.getItemId()) {
             case 0:
                 DriverDAO d = new DriverDAO(getActivity());
-                d.delete(yy.trim());
+                d.delete(driverSelected.trim());
                 driverArray(getActivity());
+                //arrayAdapter.notifyDataSetChanged();
+                return true;
+
+            case 1:
+                EDIT_DRIVER = true;
+                fragmentManager.beginTransaction().replace(R.id.fragment, new DriverRegisterFragment()).commit();
                 return true;
 
         }

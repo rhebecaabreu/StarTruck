@@ -61,6 +61,30 @@
             android:inputType="textPersonName" />
 
         <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nº Registro CNH" />
+
+        <EditText
+            android:id="@+id/edtRegNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoria" />
+
+        <Spinner
+            android:id="@+id/spinnerCat"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <Button
             android:id="@+id/btnSaveDriver"
