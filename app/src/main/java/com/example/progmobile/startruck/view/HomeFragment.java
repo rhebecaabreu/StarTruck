@@ -130,13 +130,14 @@ public class HomeFragment extends Fragment {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        menu.add(Menu.NONE, 0, Menu.NONE, "Excluir veículo");
         menu.add(Menu.NONE, 1, Menu.NONE, "Editar veículo");
         menu.add(Menu.NONE, 2, Menu.NONE, "Alterar status");
 
     }
 
     public boolean onContextItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getFragmentManager();
+
         switch (item.getItemId()) {
             case 0:
                 VehicleDAO d = new VehicleDAO(getActivity());
@@ -149,11 +150,12 @@ public class HomeFragment extends Fragment {
                 return true;
 
             case 1:
-                Log.i("ContextMenu", "Item 2a was chosen");
+                VehicleListFragment.EDIT_VEHICLE=true;
+                VehicleListFragment.setNameVehicle(yy.trim());
+                fragmentManager.beginTransaction().replace(R.id.fragment, new VehicleRegisterFragment()).commit();
+
                 return true;
             case 2:
-
-                FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, new Status()).commit();
 
                 return true;

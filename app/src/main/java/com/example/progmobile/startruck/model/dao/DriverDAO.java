@@ -72,8 +72,11 @@ public class DriverDAO {
         values.put(COLUMN_CNHnumber, d.getCNHnumber());
         values.put(COLUMN_CAT, d.getCatCnh());
 
-
-        db.insert(TABLE_NAME, null, values);
+        try {
+            db.insert(TABLE_NAME, null, values);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -96,12 +99,8 @@ public class DriverDAO {
 
                     Driver d = new Driver(name, cpf);
                     listDrivers.add(d);
-
                 }
-
             }
-
-
         }
 
         return listDrivers;

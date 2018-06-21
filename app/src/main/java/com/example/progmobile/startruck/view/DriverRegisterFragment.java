@@ -131,6 +131,9 @@ public class DriverRegisterFragment extends Fragment {
                         clear();
                     }
 
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.fragment, new DriversListFragment()).commit();
+
                 }
             }
         });

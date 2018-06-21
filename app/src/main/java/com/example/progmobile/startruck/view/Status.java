@@ -1,7 +1,9 @@
 package com.example.progmobile.startruck.view;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,8 +72,26 @@ public class Status extends Fragment{
                 }else {
                     x.update(name, statusVehicle);
                     Toast.makeText(getActivity(),"Status atualizado com sucesso!",Toast.LENGTH_SHORT).show();
-                    FragmentManager fragmentManager = getFragmentManager();
 
+
+                   /* new AlertDialog.Builder(getActivity())
+                            .setTitle("Cadastrar dados de viagem")
+                            .setMessage("Deseja cadastrar os dados da viagem agora?")
+                            .setPositiveButton("Sim",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        }
+                                    })
+                            .setNegativeButton("Não", null)
+                            .show();*/
+
+
+
+
+
+                    FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.fragment, new HomeFragment()).commit();
 
                 }

@@ -49,6 +49,7 @@
         <item>Etanol</item>
         <item>Gás Natural</item>
     </string-array>
+    <string name="title_activity_travel_register">TravelRegister</string>
 </resources>
 
 

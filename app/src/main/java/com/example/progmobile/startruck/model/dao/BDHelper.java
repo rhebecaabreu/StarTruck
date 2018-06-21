@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.progmobile.startruck.model.bean.Vehicle;
 
 public class BDHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 11;
     private static final String DATABASE_NAME = "StarTruckDB.db";
 
     SQLiteDatabase bd;
@@ -30,6 +30,7 @@ public class BDHelper extends SQLiteOpenHelper {
         bd.execSQL(UserDAO.TABLE_CREATE_USER);
         bd.execSQL(VehicleDAO.TABLE_CREATE_VEHICLE);
         bd.execSQL(DriverDAO.TABLE_CREATE_DRIVER);
+       // bd.execSQL(TravelDAO.TABLE_CREATE_TRAVEL);
         System.out.println(" tables created");
     }
 
@@ -39,6 +40,8 @@ public class BDHelper extends SQLiteOpenHelper {
         bd.execSQL(UserDAO.TABLE_DROP_USER);
         bd.execSQL(VehicleDAO.TABLE_DROP_VEHICLE);
         bd.execSQL(DriverDAO.TABLE_DROP_DRIVER);
+       // bd.execSQL(TravelDAO.TABLE_DROP_TRAVEL);
+
         onCreate(db);
     }
 }
